@@ -6,16 +6,26 @@ import br.com.ed.model.Aluno;
 
 public class Vetor {
 
-	private Aluno[] alunos = new Aluno[100];
+	private Aluno[] alunos;
 	private int totalDeAlunos = 0;
+	
+	public Vetor(int tamanhoInicial) {
+		alunos = new Aluno[tamanhoInicial];
+	}
+	
+	public Vetor() {
+		alunos = new Aluno[10];
+	}
 
 	public void adicionar(Aluno aluno) {
+		garanteEspaco();
 		alunos[totalDeAlunos] = aluno;
 		totalDeAlunos++;
 	}
 
 	public void adicionar(int posicao, Aluno aluno) {
 		if (posicao >= 0 && posicao <= totalDeAlunos) {
+			garanteEspaco();
 			for (int i = totalDeAlunos - 1; i >= posicao; i--) {
 				alunos[i + 1] = alunos[i];
 			}
@@ -53,6 +63,17 @@ public class Vetor {
 			}
 		}
 		return false;
+	}
+	
+	private void garanteEspaco() {
+		if(totalDeAlunos == alunos.length) {
+			Aluno[] novoArray = new Aluno[totalDeAlunos * 2];
+			
+			for (int i = 0; i < alunos.length; i++) {
+				novoArray[i] = alunos[i];
+			}
+			alunos = novoArray;
+		}
 	}
 
 	public int tamanho() {

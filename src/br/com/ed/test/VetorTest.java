@@ -1,6 +1,12 @@
 package br.com.ed.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 import br.com.ed.Vetor;
@@ -24,6 +30,33 @@ public class VetorTest {
 		assertTrue(vetor.contem(aluno2));
 		assertTrue(vetor.contem(aluno1));
 		assertFalse(vetor.contem(aluno3));
+		
+	}
+	
+	@Test
+	public void testaCriaVetorComUmaPosicaoEAdicionaVariosElementos() {
+		Aluno aluno0 = new Aluno("Joao");
+		Aluno aluno1 = new Aluno("Jose");
+		Aluno aluno2 = new Aluno("Pedro");
+		Aluno aluno3 = new Aluno("Amanda");
+		Aluno aluno4 = new Aluno("Leticia");
+		
+		Vetor vetor = new Vetor(1);
+		System.out.println(vetor);
+		
+		vetor.adicionar(aluno0);
+		System.out.println(vetor);
+		
+		
+		vetor.adicionar(aluno1);
+		vetor.adicionar(aluno2);
+		vetor.adicionar(aluno3);
+		System.out.println(vetor);
+		vetor.adicionar(aluno4);
+		System.out.println(vetor);		
+		
+		assertEquals(vetor.tamanho(), 5);
+		
 		
 	}
 	
