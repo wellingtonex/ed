@@ -18,6 +18,9 @@ public class VetorTest {
 		vetor.adicionar(aluno1);
 		vetor.adicionar(aluno2);
 		
-		Assert.assertEquals(vetor.tamanho(), 2);
+		System.out.println(vetor.toString());
+		
+		Assert.assertEquals(vetor.pegar(0), aluno1);
+		Assert.assertEquals(vetor.pegar(1), aluno2);
 	}
 }
