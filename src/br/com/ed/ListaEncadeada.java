@@ -24,12 +24,27 @@ public class ListaEncadeada<T> {
 			Node <T> newNode = new Node<T>(elemento, null);
 			ultimo.setProximo(newNode);
 			ultimo = newNode;
+			tamanho++;
+		}
+	}
+	
+	private boolean isPosisaoValida(int posicao) {
+		return posicao >=0 && posicao < tamanho; 
+	}
+	
+	private void validaPosicao(int posicao) {
+		if(!isPosisaoValida(posicao)) {
+			throw new IllegalArgumentException("Posição invalida.");
 		}
 	}
 
 	public void adiciona(int posicao, T elemento) {
-		Node<T> node = getNode(posicao);
-
+		validaPosicao(posicao);
+		
+		Node<T> anterior = getNode(posicao -1);		
+		Node<T> newNode = new Node<T>(elemento, anterior.getProximo());
+		anterior.setProximo(newNode);
+		tamanho++;
 	}
 
 	public Node<T> getNode(int posicao) {
@@ -45,9 +60,30 @@ public class ListaEncadeada<T> {
 	}
 
 	public void remove(int posicao) {
-
+		validaPosicao(posicao);
+		if(posicao == 0) {
+			primeiro = primeiro.getProximo();
+		} else {
+			Node<T> anterior = getNode(posicao - 1);
+			Node<T> corrente = getNode(posicao);
+			
+			anterior.setProximo(corrente.getProximo());
+			corrente = null;
+			
+			if(posicao == (tamanho -1)) {
+				ultimo = anterior;
+			}
+		}
+		
+		
+		
+		tamanho--;
+		
+		if(tamanho == 0) {
+			ultimo = null;
+		}
 	}
-
+	
 	public int tamanho() {
 		return tamanho;
 	}
