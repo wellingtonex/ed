@@ -39,5 +39,10 @@ public class Aluno {
 		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return nome;
+	}
 }
