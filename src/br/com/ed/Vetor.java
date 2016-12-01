@@ -4,50 +4,50 @@ import java.util.Arrays;
 
 import br.com.ed.model.Aluno;
 
-public class Vetor {
+public class Vetor<T> {
 
-	private Aluno[] alunos;
-	private int totalDeAlunos = 0;
+	private Object[] elementos;
+	private int tamanho = 0;
 	
 	public Vetor(int tamanhoInicial) {
-		alunos = new Aluno[tamanhoInicial];
+		elementos = new Object[tamanhoInicial];
 	}
 	
 	public Vetor() {
-		alunos = new Aluno[10];
+		elementos = new Object[10];
 	}
 
-	public void adicionar(Aluno aluno) {
+	public void adicionar(T elemento) {
 		garanteEspaco();
-		alunos[totalDeAlunos] = aluno;
-		totalDeAlunos++;
+		elementos[tamanho] = elemento;
+		tamanho++;
 	}
 
-	public void adicionar(int posicao, Aluno aluno) {
-		if (posicao >= 0 && posicao <= totalDeAlunos) {
+	public void adicionar(int posicao, T elemento) {
+		if (posicao >= 0 && posicao <= tamanho) {
 			garanteEspaco();
-			for (int i = totalDeAlunos - 1; i >= posicao; i--) {
-				alunos[i + 1] = alunos[i];
+			for (int i = tamanho - 1; i >= posicao; i--) {
+				elementos[i + 1] = elementos[i];
 			}
-			alunos[posicao] = aluno;
-			totalDeAlunos++;
+			elementos[posicao] = elemento;
+			tamanho++;
 		} else {
 			throw new IllegalArgumentException("Posição invalida.");
 		}
 	}
 
-	public Aluno pegar(int posicao) {
+	@SuppressWarnings("unchecked")
+	public T pegar(int posicao) {
 		validarPosicao(posicao);
-		return alunos[posicao];
+		return (T) elementos[posicao];
 	}
 
 	public void remove(int posicao) {
-
 		validarPosicao(posicao);
-		for (int i = posicao; i < totalDeAlunos; i++) {
-			alunos[i] = alunos[i + 1];
+		for (int i = posicao; i < tamanho; i++) {
+			elementos[i] = elementos[i + 1];
 		}
-		totalDeAlunos--;
+		tamanho--;
 	}
 
 	private void validarPosicao(int posicao) {
@@ -57,8 +57,8 @@ public class Vetor {
 	}
 
 	public boolean contem(Aluno aluno) {
-		for (int i = 0; i < totalDeAlunos; i++) {
-			if (alunos[i].equals(aluno)) {
+		for (int i = 0; i < tamanho; i++) {
+			if (elementos[i].equals(aluno)) {
 				return true;
 			}
 		}
@@ -66,26 +66,26 @@ public class Vetor {
 	}
 	
 	private void garanteEspaco() {
-		if(totalDeAlunos == alunos.length) {
-			Aluno[] novoArray = new Aluno[totalDeAlunos * 2];
+		if(tamanho == elementos.length) {
+			Object[] novoArray = new Object[tamanho * 2];
 			
-			for (int i = 0; i < alunos.length; i++) {
-				novoArray[i] = alunos[i];
+			for (int i = 0; i < elementos.length; i++) {
+				novoArray[i] = elementos[i];
 			}
-			alunos = novoArray;
+			elementos = novoArray;
 		}
 	}
 
 	public int tamanho() {
-		return totalDeAlunos;
+		return tamanho;
 	}
 
 	boolean isPosicaoValida(int posicao) {
-		return posicao >= 0 && posicao < totalDeAlunos;
+		return posicao >= 0 && posicao < tamanho;
 	}
 
 	@Override
 	public String toString() {
-		return Arrays.toString(alunos);
+		return Arrays.toString(elementos);
 	}
 }
