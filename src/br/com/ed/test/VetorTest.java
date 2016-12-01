@@ -4,9 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
 import br.com.ed.Vetor;
@@ -20,7 +17,7 @@ public class VetorTest {
 		Aluno aluno2 = new Aluno("Jose");
 		Aluno aluno3 = new Aluno("Pedro");
 		
-		Vetor vetor = new Vetor();
+		Vetor<Aluno> vetor = new Vetor<Aluno>();
 		
 		vetor.adicionar(aluno1);
 		vetor.adicionar(aluno2);
@@ -41,7 +38,7 @@ public class VetorTest {
 		Aluno aluno3 = new Aluno("Amanda");
 		Aluno aluno4 = new Aluno("Leticia");
 		
-		Vetor vetor = new Vetor(1);
+		Vetor<Aluno> vetor = new Vetor<Aluno>(1);
 		System.out.println(vetor);
 		
 		vetor.adicionar(aluno0);
@@ -66,7 +63,7 @@ public class VetorTest {
 		Aluno jose = new Aluno("Jose");
 		Aluno pedro = new Aluno("Pedro");
 		
-		Vetor vetor = new Vetor();
+		Vetor<Aluno> vetor = new Vetor<Aluno>();
 		
 		vetor.adicionar(0, joao);
 		vetor.adicionar(1, jose);
@@ -86,7 +83,7 @@ public class VetorTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testaAdicionarElementoEmDeterminadaPosicaoInvalidaDoVetor() {
 		Aluno joao = new Aluno("Joao");
-		Vetor vetor = new Vetor();
+		Vetor<Aluno> vetor = new Vetor<Aluno>();
 		vetor .adicionar(1, joao);
 	}
 	
@@ -96,7 +93,7 @@ public class VetorTest {
 		Aluno aluno2 = new Aluno("Jose");
 		Aluno aluno3 = new Aluno("Pedro");
 		
-		Vetor vetor = new Vetor();
+		Vetor<Aluno> vetor = new Vetor<Aluno>();
 		
 		vetor.adicionar(aluno1);
 		vetor.adicionar(aluno2);
@@ -113,7 +110,7 @@ public class VetorTest {
 		Aluno aluno2 = new Aluno("Pedro");
 		Aluno aluno3 = new Aluno("Guilherme");
 		
-		Vetor vetor = new Vetor();
+		Vetor<Aluno> vetor = new Vetor<Aluno>();
 		
 		vetor.adicionar(aluno0);
 		vetor.adicionar(aluno1);
@@ -136,7 +133,7 @@ public class VetorTest {
 		Aluno aluno2 = new Aluno("Jose");
 		Aluno aluno3 = new Aluno("Pedro");
 		
-		Vetor vetor = new Vetor();
+		Vetor<Aluno> vetor = new Vetor<Aluno>();
 		
 		vetor.adicionar(aluno1);
 		vetor.adicionar(aluno2);
