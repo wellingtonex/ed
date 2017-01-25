@@ -1,6 +1,6 @@
 package br.com.ed.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -151,7 +151,7 @@ public class ListaDuplamenteEncadeadaTest {
 		alunos.adiciona(aluno0);
 		alunos.adiciona(aluno1);
 		
-		assertEquals(true, alunos.contains(aluno1));
+		assertTrue(alunos.contains(aluno1));
 	}
 	
 	@Test
@@ -164,7 +164,7 @@ public class ListaDuplamenteEncadeadaTest {
 		alunos.adiciona(aluno0);
 		
 		
-		assertEquals(false, alunos.contains(aluno1));
+		assertFalse(alunos.contains(aluno1));
 	}
 	
 	@Test
